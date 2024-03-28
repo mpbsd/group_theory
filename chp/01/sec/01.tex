@@ -1,0 +1,138 @@
+\begin{definition}\label{def:group-action}
+  A right action of a group \(G\) on a nonempty set \(X\) is a function
+  \[
+    X\times{G}\to{X},\quad(x,g)\mapsto{xg},
+  \]
+  such that:
+  \begin{enumerate}[i.]
+    \item
+      \(x(gh)=(xg)h\) for all \(g,h\in{G}\) and \(x\in{X}\);
+    \item
+      \(x1=x\) for all \(x\in{X}\).
+  \end{enumerate}
+  The set \(X\) is called a \(G\)-set. A left action is defined in a similar
+  fashion.
+\end{definition}
+
+\begin{example}\label{ex:action-of-symmetric-groups}
+  Let \(S_{n}\) be the symmetric group of degree \(n\). Then, \(S_{n}\) acts on
+  the the set \(\left\{1,\ldots,n\right\}\) from the right in a rather natural
+  way:
+  \[
+    \left\{1,\ldots,n\right\}\times{S_{n}}\to\left\{1,\ldots,n\right\},
+    \quad
+    (x,\alpha)\mapsto{x^{\alpha}}.
+  \]
+\end{example}
+
+\begin{example}\label{ex:conjugation}
+  Let \(G\) be a group. Then, \(G\) acts on itself from the right by conjugation:
+  \[
+    G\times{G}\to{G},\quad(x,g)\mapsto{x^{g}=g^{-1}xg}.
+  \]
+\end{example}
+
+\begin{definition}\label{def:orbits-and-stabilizers}
+  Let \(X\) be a \(G\)-set. Then, following common terminology, the set:
+  \begin{enumerate}[i.]
+    \item
+      \(xG=\left\{y\in{G}:y=gx\text{ for some }g\in{G}\right\}\) is called the
+      \(G\)-orbit of \(X\);
+    \item
+      \(G_{x}=\left\{g\in{G}:xg=x\right\}\) is called the \(G\)-stabilizer of
+      \(x\),
+  \end{enumerate}
+  for any \(x\in{X}\).
+\end{definition}
+
+\begin{proposition}\label{prop:orbit-decomposition-of-g-sets}
+  Let \(X\) be a \(G\)-set. Then, the binary relation given by
+  \begin{equation}\label{eq:g-equivalent-points}
+    \forall{x,y\in{X}}:
+    \quad
+    x\equiv{y}\pmod{G}
+    \iff
+    \exists{g\in{G}}:
+    \,\,
+    xg=y,
+  \end{equation}
+  is an equivalence relation on \(X\). Moreover, the equivalence class
+  \[
+    \left\{y\in{X}:x\equiv{y}\pmod{G}\right\},
+  \]
+  equals \(xG\), that is, the \(G\)-orbit of \(x\), for any point \(x\in{X}\).
+\end{proposition}
+
+\begin{proof}
+  For any given \(x,y\) and \(z\) in \(X\), we have that:
+  \begin{enumerate}
+    \item
+      \(x\equiv{x}\pmod{G}\) for every \(x\in{X}\), since \(x1=x\);
+    \item
+      If \(x\equiv{y}\pmod{G}\), then \(xg=y\) for some \(g\in{G}\). But, then
+      \(yg^{-1}=x\) and so \(y\equiv{x}\pmod{G}\);
+    \item
+      If \(x\equiv{y}\pmod{G}\) and \(y\equiv{z}\pmod{G}\), then we have that
+      \(xg=y\) and \(yh=z\) for certain \(g,h\in{G}\). Therefore,
+      \(x(gh)=(xg)h=yh=z\) and so \(x\equiv{z}\pmod{G}\).
+  \end{enumerate}
+  Now, notice that if \(y\in\left\{y\in{X}:x\equiv{y}\pmod{G}\right\}\), then
+  \(y=gx\) for some \(g\in{G}\). Conversely, for any \(g\in{G}\),
+  \(gx\equiv{x}\pmod{G}\) because \(g^{-1}\in{G}\) and
+  \(g^{-1}(gx)=(g^{-1}g)x=1x=x\). Therefore, we conclude that
+  \begin{align*}
+    \left\{y\in{X}:x\equiv{y}\pmod{G}\right\}
+    &=
+    \left\{gx:g\in{G}\right\}
+    =xG.
+  \end{align*}
+\end{proof}
+
+\begin{proposition}\label{prop:cardinality-of-orbits}
+  Let \(X\) be a \(G\)-set. Then, we have:
+  \begin{enumerate}[i.]
+    \item
+      \(G_{x}\leqslant{G}\);
+    \item
+      \(\order{xG}=(G:G_{x})\),
+  \end{enumerate}
+  for every \(x\in{X}\).
+\end{proposition}
+
+\begin{proof}
+  Let \(x\in{X}\) be given. The identity element of \(G\) obviously belongs to
+  \(G_{x}\) and, for any pair of elements \(g,h\in{G_{x}}\), we have that
+  \[
+    x(gh^{-1})=(xg)h^{-1}=xh^{-1}=(xh)h^{-1}=x(hh^{-1})=x1=x,
+  \]
+  and as such \(gh^{-1}\in{G_{x}}\). Therefore, \(G_{x}\) is a subgroup of
+  \(G\). Now, regarding the function
+  \[
+    G/G_{x}\to{xG},
+    \quad
+    G_{x}g\mapsto{xg}.
+  \]
+  it's true that
+  \[
+    xg=xh
+    \iff
+    x(gh^{-1})=x
+    \iff
+    gh^{-1}\in{G_{x}}
+    \iff
+    G_{x}g=G_{x}h,
+  \]
+  for every pair of elements \(g,h\in{G}\), from what it follows that
+  \(G_{x}g\mapsto{xg}\) is an injective function, as well as
+  \[
+    y\in{xG}
+    \iff
+    \exists{g\in{G}}:\,
+    y=xg
+    \implies
+    G_{x}g\mapsto{y=xg},
+  \]
+  which shows that \(G_{x}g\mapsto{xg}\) is also onto. Henceforth,
+  \(\order{xG}=(G:G_{x})\) as claimed. This completes the proof.
+\end{proof}
+
