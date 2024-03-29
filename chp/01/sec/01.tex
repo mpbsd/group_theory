@@ -1,3 +1,5 @@
+\section{Group Actions}\label{sec:group-actions}
+
 \begin{definition}\label{def:group-action}
   A right action of a group \(G\) on a nonempty set \(X\) is a function
   \[
@@ -36,10 +38,10 @@
   Let \(X\) be a \(G\)-set. Then, following common terminology, the set:
   \begin{enumerate}[i.]
     \item
-      \(xG=\left\{y\in{G}:y=gx\text{ for some }g\in{G}\right\}\) is called the
+      \(\text{orb}(x,G)=\left\{y\in{G}:y=gx\text{ for some }g\in{G}\right\}\) is called the
       \(G\)-orbit of \(X\);
     \item
-      \(G_{x}=\left\{g\in{G}:xg=x\right\}\) is called the \(G\)-stabilizer of
+      \(\text{stab}(x,G)=\left\{g\in{G}:xg=x\right\}\) is called the \(G\)-stabilizer of
       \(x\),
   \end{enumerate}
   for any \(x\in{X}\).
@@ -50,7 +52,7 @@
   \begin{equation}\label{eq:g-equivalent-points}
     \forall{x,y\in{X}}:
     \quad
-    x\equiv{y}\pmod{G}
+    x\equiv{y}\mod{G}
     \iff
     \exists{g\in{G}}:
     \,\,
@@ -58,81 +60,190 @@
   \end{equation}
   is an equivalence relation on \(X\). Moreover, the equivalence class
   \[
-    \left\{y\in{X}:x\equiv{y}\pmod{G}\right\},
+    \left\{y\in{X}:x\equiv{y}\mod{G}\right\},
   \]
-  equals \(xG\), that is, the \(G\)-orbit of \(x\), for any point \(x\in{X}\).
+  equals \(\text{orb}(x,G)\), the \(G\)-orbit of \(x\), for any point \(x\in{X}\).
 \end{proposition}
 
 \begin{proof}
   For any given \(x,y\) and \(z\) in \(X\), we have that:
   \begin{enumerate}
     \item
-      \(x\equiv{x}\pmod{G}\) for every \(x\in{X}\), since \(x1=x\);
+      \(x\equiv{x}\mod{G}\) for every \(x\in{X}\), since \(x1=x\);
     \item
-      If \(x\equiv{y}\pmod{G}\), then \(xg=y\) for some \(g\in{G}\). But, then
-      \(yg^{-1}=x\) and so \(y\equiv{x}\pmod{G}\);
+      If \(x\equiv{y}\mod{G}\), then \(xg=y\) for some \(g\in{G}\). But, then
+      \(yg^{-1}=x\) and so \(y\equiv{x}\mod{G}\);
     \item
-      If \(x\equiv{y}\pmod{G}\) and \(y\equiv{z}\pmod{G}\), then we have that
+      If \(x\equiv{y}\mod{G}\) and \(y\equiv{z}\mod{G}\), then we have that
       \(xg=y\) and \(yh=z\) for certain \(g,h\in{G}\). Therefore,
-      \(x(gh)=(xg)h=yh=z\) and so \(x\equiv{z}\pmod{G}\).
+      \(x(gh)=(xg)h=yh=z\) and so \(x\equiv{z}\mod{G}\).
   \end{enumerate}
-  Now, notice that if \(y\in\left\{y\in{X}:x\equiv{y}\pmod{G}\right\}\), then
+  Now, notice that if \(y\in\left\{y\in{X}:x\equiv{y}\mod{G}\right\}\), then
   \(y=gx\) for some \(g\in{G}\). Conversely, for any \(g\in{G}\),
-  \(gx\equiv{x}\pmod{G}\) because \(g^{-1}\in{G}\) and
+  \(gx\equiv{x}\mod{G}\) because \(g^{-1}\in{G}\) and
   \(g^{-1}(gx)=(g^{-1}g)x=1x=x\). Therefore, we conclude that
   \begin{align*}
-    \left\{y\in{X}:x\equiv{y}\pmod{G}\right\}
+    \left\{y\in{X}:x\equiv{y}\mod{G}\right\}
     &=
     \left\{gx:g\in{G}\right\}
-    =xG.
+    =\text{orb}(x,G).
   \end{align*}
+  This completes the proof.
 \end{proof}
 
+Suppose that \(X\) is a finite \(G\)-set. Let \(T\subset{X}\) be a set with the
+following properties:
+\begin{enumerate}
+  \item
+    \(X=\bigcup\left\{\text{orb}(x,G):x\in{T}\right\}\).
+  \item
+    \(\forall{x,x'\in{T}}:\quad{x\neq{x'}}\implies{\text{orb}(x,G)\cap{\text{orb}(x',G)}}=\emptyset\);
+\end{enumerate}
+Then, it's clear that
+\begin{equation}\label{eq:numeric-characteristic}
+  \order{X}=\sum\limits_{x\in{T}}\order{\text{orb}(x,G)}=\sum\limits_{x\in{T}}(G:\text{stab}(x,G)).
+\end{equation}
+
 \begin{proposition}\label{prop:cardinality-of-orbits}
-  Let \(X\) be a \(G\)-set. Then, we have:
-  \begin{enumerate}[i.]
-    \item
-      \(G_{x}\leqslant{G}\);
-    \item
-      \(\order{xG}=(G:G_{x})\),
-  \end{enumerate}
-  for every \(x\in{X}\).
+  Let \(X\) be a \(G\)-set. Then, for any \(x\in{X}\), \(\text{stab}(x,G)\) is a subgroup
+  of \(G\) and the cardinality of \(\text{orb}(x,G)\), the \(G\)-orbit of \(x\), equals the
+  index \((G:\text{stab}(x,G))\) of \(\text{stab}(x,G)\) in \(G\).
 \end{proposition}
 
 \begin{proof}
   Let \(x\in{X}\) be given. The identity element of \(G\) obviously belongs to
-  \(G_{x}\) and, for any pair of elements \(g,h\in{G_{x}}\), we have that
+  \(\text{stab}(x,G)\) and, for any pair of elements \(g,h\in{\text{stab}(x,G)}\), we have that
   \[
     x(gh^{-1})=(xg)h^{-1}=xh^{-1}=(xh)h^{-1}=x(hh^{-1})=x1=x,
   \]
-  and as such \(gh^{-1}\in{G_{x}}\). Therefore, \(G_{x}\) is a subgroup of
+  and as such \(gh^{-1}\in{\text{stab}(x,G)}\). Therefore, \(\text{stab}(x,G)\) is a subgroup of
   \(G\). Now, regarding the function
   \[
-    G/G_{x}\to{xG},
+    G/\text{stab}(x,G)\to{\text{orb}(x,G)},
     \quad
-    G_{x}g\mapsto{xg}.
+    \text{stab}(x,G)g\mapsto{xg}.
   \]
   it's true that
-  \[
+  \begin{align*}
     xg=xh
-    \iff
+    &\iff
     x(gh^{-1})=x
     \iff
-    gh^{-1}\in{G_{x}}
-    \iff
-    G_{x}g=G_{x}h,
-  \]
+    gh^{-1}\in{\text{stab}(x,G)}
+    \\
+    &\iff
+    \text{stab}(x,G)g=\text{stab}(x,G)h,
+  \end{align*}
   for every pair of elements \(g,h\in{G}\), from what it follows that
-  \(G_{x}g\mapsto{xg}\) is an injective function, as well as
+  \(\text{stab}(x,G)g\mapsto{xg}\) is an injective function, as well as
   \[
-    y\in{xG}
+    y\in{\text{orb}(x,G)}
     \iff
     \exists{g\in{G}}:\,
     y=xg
     \implies
-    G_{x}g\mapsto{y=xg},
+    \text{stab}(x,G)g\mapsto{y=xg},
   \]
-  which shows that \(G_{x}g\mapsto{xg}\) is also onto. Henceforth,
-  \(\order{xG}=(G:G_{x})\) as claimed. This completes the proof.
+  which shows that \(\text{stab}(x,G)g\mapsto{xg}\) is also onto. Henceforth,
+  \(\order{\text{orb}(x,G)}=(G:\text{stab}(x,G))\) as claimed. This completes the proof.
 \end{proof}
 
+\section{Applications}\label{sec:applications}
+
+\begin{proposition}\label{prop:class-equation}
+  Let \(G\) be a finite \(p\)-group. Then, \(G\) has a nontrivial center.
+\end{proposition}
+
+\begin{proof}
+  Let \(G\) act on itself from the right by conjugation. Then, we have that
+  \[
+    \text{orb}(x,G)
+    =
+    \left\{x^{g}:g\in{G}\right\}
+    =
+    \left\{x\right\}
+    \iff
+    x\in{Z(G)},
+  \]
+  for any \(x\in{G}\). Therefore,
+  \[
+    \order{G}
+    =
+    \sum_{x\in{Z(G)}}\order{\text{orb}(x,G)}
+    +
+    \sum_{x\notin{Z(G)}}\order{\text{orb}(x,G)}
+    =
+    \order{Z(G)}
+    +
+    \sum_{x\notin{Z(G)}}(G:\text{stab}(x,G))
+  \]
+\end{proof}
+
+\begin{theorem}[Cauchy]\label{thm:cauchys-theorem}
+  Let \(G\) be a finite group and \(p\) be a prime divisor of \(\order{G}\).
+  Then, there is some \(g\in{G}\) such that \(\order{g}=p\).
+\end{theorem}
+
+\begin{proof}
+  The graph of the function
+  \[
+    f:G^{p-1}\to{G},\quad
+    \left(x_{1},\ldots,x_{p-1}\right)\mapsto\left(\prod_{i=1}^{p-1}x_{i}\right)^{-1},
+  \]
+  is the set
+  \[
+    \Omega
+    =
+    \left\{(x_{1},\ldots,x_{p})\in{G^{p}}:\prod_{i=1}^{p}x_{i}=1\right\},
+  \]
+  which has \(\order{G}^{p-1}\) elements in total, a number divisible by \(p\).
+  Consider the action of the additive group \(\mathbb{Z}_{p}\) on the set
+  \(\Omega\) from the right given by
+  \[
+    \left(x_{1},x_{2}\ldots,x_{p-1},x_{p}\right)\cdot\bar{1}
+    =
+    \left(x_{p},x_{1}\ldots,x_{p-2},x_{p-1}\right).
+  \]
+  The \(\mathbb{Z}_{p}\)-orbit of a point
+  \(x=\left(x_{1},\ldots,x_{p}\right)\in{\Omega}\) consists of the element
+  \(x\) alone if, and only if, the coordinates
+  \(x_{1},x_{2},\ldots,x_{p-1},x_{p}\) of \(x\) are all equal to one another,
+  that is, \(x_{1}=x_{2}=\cdots=x_{p-1}=x_{p}\). This is certainly the case for
+  the element \(\left(1,\ldots,1\right)\in{\Omega}\) whose coordinates are all
+  equal to the identity element of \(G\). Let \(T\subset{\Omega}\) be a
+  transveral for the action of \(\mathbb{Z}_{p}\) on \(\Omega\), meaning that:
+  \begin{enumerate}
+    \item
+      \(\Omega=\bigcup\left\{\text{orb}(x,\mathbb{Z}_{p}):x\in{T}\right\}\);
+    \item
+      \(\forall{x,x'\in{T}}:\quad{x\neq{x'}\implies{\text{orb}(x,\mathbb{Z}_{p})\cap{\text{orb}(x',\mathbb{Z}_{p})}=\emptyset}}\).
+  \end{enumerate}
+  Then, we have that
+  \[
+    \order{\Omega}
+    =
+    \sum\limits_{x\in{T}}\order{\text{orb}(x,\mathbb{Z}_{p})}
+    =
+    \sum\limits_{\order{\text{orb}(x,\mathbb{Z}_{p})}=1}1
+    +
+    \sum\limits_{\order{\text{orb}(x,\mathbb{Z}_{p})}>1}(\mathbb{Z}_{p}:\text{stab}(x,\mathbb{Z}_{p})).
+  \]
+  Since
+  \[
+    \order{\Omega}
+    \quad\text{and}\quad
+    \sum_{\order{\text{orb}(x,\mathbb{Z}_{p})}=1}(\mathbb{Z}_{p}:\text{stab}(x,\mathbb{Z}_{p})),
+  \]
+  are both divisible by \(p\), so is
+  \[
+    \sum_{\order{\text{orb}(x,\mathbb{Z}_{p})}>1}1.
+  \]
+  This last sum would be equal to zero if there were no
+  \(\mathbb{Z}_{p}\)-orbits of size \(1\) at all in \(\Omega\), but as we've
+  already seen there's that of the element \(x=(1,\ldots,1)\). Therefore, there
+  must exist some \(g\in{G}\), \(g\neq{1}\), with
+  \[
+    \text{orb}((x,\ldots,x),\mathbb{Z}_{p})=\left\{(x,\ldots,x)\right\},
+  \]
+  from what we get that \(x^{p}=1\). This completes the proof.
+\end{proof}
