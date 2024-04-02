@@ -35,16 +35,24 @@
 \end{example}
 
 \begin{definition}\label{def:orbits-and-stabilizers}
-  Let \(X\) be a \(G\)-set. Then, following common terminology, the set:
+  Let \(X\) be a \(G\)-set. Then, for any \({x}\in{X}\), following common
+  terminology, we define:
   \begin{enumerate}[i.]
     \item
-      \(\text{orb}(x,G)=\left\{y\in{G}:y=gx\text{ for some }g\in{G}\right\}\) is called the
-      \(G\)-orbit of \(X\);
+      The \(G\)-orbit of \(x\) in \(X\) to be the set:
+      \[
+        \text{orb}(x,G)
+        =
+        \left\{y\in{G}:y=gx\text{ for some }g\in{G}\right\};
+      \]
     \item
-      \(\text{stab}(x,G)=\left\{g\in{G}:xg=x\right\}\) is called the \(G\)-stabilizer of
-      \(x\),
+      The \(G\)-stabilizer of \(x\) in \(G\) to be the set
+      \[
+        \text{stab}(x,G)
+        =
+        \left\{g\in{G}:xg=x\right\}.
+      \]
   \end{enumerate}
-  for any \(x\in{X}\).
 \end{definition}
 
 \begin{proposition}\label{prop:orbit-decomposition-of-g-sets}
@@ -151,7 +159,7 @@ Then, it's clear that
 \section{Applications}\label{sec:applications}
 
 \begin{proposition}\label{prop:class-equation}
-  Let \(G\) be a finite \(p\)-group. Then, \(G\) has a nontrivial center.
+  Let \(G\) be a finite \(p\)-group. Then, the center of \(G\) is not trivial.
 \end{proposition}
 
 \begin{proof}
@@ -165,18 +173,30 @@ Then, it's clear that
     \iff
     x\in{Z(G)},
   \]
-  for any \(x\in{G}\). Therefore,
+  for any \(x\in{G}\). By Lagrange's Theorem, the number
   \[
+    (G:\text{stab}(x,G))
+    =
+    \order{\text{orb}(x,G)},
+  \]
+  is a divisor of \(\order{G}\) that is greater than \(1\) for every
+  \({x}\in{G\setminus{Z(G)}}\) (thus, divisible by \(p\)). Since
+  \begin{align*}
     \order{G}
-    =
-    \sum_{x\in{Z(G)}}\order{\text{orb}(x,G)}
+    &=
+    \sum_{x\in{T}}\order{\text{orb}(x,G)}
+    \\
+    &=
+    \sum_{x\in{T\cap{Z(G)}}}\order{\text{orb}(x,G)}
     +
-    \sum_{x\notin{Z(G)}}\order{\text{orb}(x,G)}
-    =
+    \sum_{x\in{T\setminus{Z(G)}}}\order{\text{orb}(x,G)}
+    \\
+    &=
     \order{Z(G)}
     +
-    \sum_{x\notin{Z(G)}}(G:\text{stab}(x,G))
-  \]
+    \sum_{x\in{T\setminus{Z(G)}}}(G:\text{stab}(x,G))
+  \end{align*}
+  we get that \(\order{Z(G)}\) is also divisble by \(p\).
 \end{proof}
 
 \begin{theorem}[Cauchy]\label{thm:cauchys-theorem}
