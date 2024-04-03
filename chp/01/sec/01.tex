@@ -267,3 +267,64 @@ Then, it's clear that
   \]
   from what we get that \(x^{p}=1\). This completes the proof.
 \end{proof}
+
+\begin{proposition}\label{prop:first-sylow-theorem}
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say
+  \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, there
+  exists \({H}\leqslant{G}\) such that \(\order{H}=p^{\alpha}\).
+\end{proposition}
+
+\begin{proof}
+  Let
+  \[
+    \Omega(p,G)
+    =
+    \left\{{X}\subset{G}:\order{X}=p^{\alpha}\right\}
+    ,
+  \]
+  be the set of all the sets of order \(p^{\alpha}\) in \(G\). Our objective is
+  to show that there is a subgroup of \(G\) among the elements of
+  \(\Omega(p,G)\). First, notice that \(p\) does not divide
+  \[
+    \order{\Omega(p,G)}
+    =
+    \binom{\order{G}}{p^{\alpha}}
+    =
+    \frac{\order{G}\cdots\left(\order{G}-i\right)\cdots\left(\order{G}-p^{\alpha}+1\right)}{p^{\alpha}\cdots\left(p^{\alpha}-i\right)\cdots{1}}
+    .
+  \]
+  In fact, for any \({i}\in{\left\{1,\ldots,p^{\alpha}-1\right\}}\), we get
+  that:
+  \begin{enumerate}[i.]
+    \item
+      If \(p^{\beta}\) divides \(\order{G}-i=p^{\alpha}m-i\), then \(p^{\beta}\) also divides \(p^{\alpha}-i\) since, if there is a \({q}\in{\mathbb{Z}}\) such that \(p^{\alpha}m-i=qp^{\beta}\), then \(i=\left(p^{\alpha-\beta}m-q\right)p^{\beta}\) with \({p^{\alpha-\beta}m-q}\in{\mathbb{Z}}\), so \(p^{\beta}\) divides both \(p^{\alpha}\) and \(i\). Thus, \(p^{\beta}\) divides the difference \(p^{\alpha}-i\);
+    \item
+      If \(p^{\beta}\) divides \(p^{\alpha}-i\), then \(p^{\alpha}-i=qp^{\beta}\) for some \({q}\in{\mathbb{Z}}\). So, we get that \(i=\left(p^{\alpha-\beta}-q\right)p^{\beta}\) and, because \(p^{\alpha-\beta}-q\) belongs to \(\mathbb{Z}\), \(p^{\beta}\) divides \(i\). Thus, \(p^{\beta}\) divides the difference \(p^{\alpha}m-i\).
+  \end{enumerate}
+  Now, let \(G\) act on \(\Omega(p,G)\) from the right by translations:
+  \[
+    \Omega(p,G)\times{G}\to{\Omega(p,G)},\quad(X,g)\mapsto{Xg},
+  \]
+  where \(Xg=\left\{xg:{x}\in{X}\right\}\). Now, because we have that
+  \[
+    \order{\Omega(p,G)}
+    =
+    \sum_{{X}\in{T}}\order{\text{orb}(X,G)}
+    ,
+  \]
+  and \(p\) does not divide \(\order{\Omega(p,G)}\), we know that \(p\) does not divide \(\order{\text{orb}(X_{0},G)}\) for some \({X_{0}}\in{\Omega(p,G)}\).
+  Take \(H=\text{stab}(X_{0},G)\). It follows that \(p^{\alpha}\) divides \(\order{H}\) since, by Lagranges's Theorem, it divides
+  \[
+    \order{G}
+    =
+    \left(G:\text{stab}(X_{0},G)\right)\order{\text{stab}(X_{0},G)}
+    =
+    \order{\text{orb}(X_{0},G)}\order{H}
+    ,
+  \]
+  and \(p\) does not divide \(\order{\text{orb}(X_{0},G)}\). Thus, \(p^{\alpha}\leqslant{\order{H}}\). Now, take any \({a}\in{X_{0}}\) and define
+  \[
+    H\to{X_{0}},\quad{g\mapsto{ag}}.
+  \]
+  Notice that \(ag\) belongs to \(X_{0}\) for every \({g}\in{H=\text{stab}(X_{0},G)}\), so the function above is well defined. It's clearly injective, so \(\order{H}\leqslant{\order{X_{0}}}=p^{\alpha}\). Therefore, \(\order{H}=p^{\alpha}\). This completes the proof.
+\end{proof}
