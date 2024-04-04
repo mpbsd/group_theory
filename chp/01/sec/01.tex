@@ -17,9 +17,7 @@
 \end{definition}
 
 \begin{example}\label{ex:action-of-symmetric-groups}
-  Let \(S_{n}\) be the symmetric group of degree \(n\). Then, \(S_{n}\) acts on
-  the the set \(\left\{1,\ldots,n\right\}\) from the right in a rather natural
-  way:
+  Let \(S_{n}\) be the symmetric group of degree \(n\). Then, \(S_{n}\) acts on the the set \(\left\{1,\ldots,n\right\}\) from the right in a rather natural way:
   \[
     \left\{1,\ldots,n\right\}\times{S_{n}}\to\left\{1,\ldots,n\right\},
     \quad
@@ -35,8 +33,7 @@
 \end{example}
 
 \begin{definition}\label{def:orbits-and-stabilizers}
-  Let \(X\) be a \(G\)-set. Then, for any \({x}\in{X}\), following common
-  terminology, we define:
+  Let \(X\) be a \(G\)-set. Then, for any \({x}\in{X}\), following common terminology, we define:
   \begin{enumerate}[i.]
     \item
       The \(G\)-orbit of \(x\) in \(X\) to be the set:
@@ -79,21 +76,15 @@
     \item
       \(x\equiv{x}\mod{G}\) for every \(x\in{X}\), since \(x1=x\);
     \item
-      If \(x\equiv{y}\mod{G}\), then \(xg=y\) for some \(g\in{G}\). But, then
-      \(yg^{-1}=x\) and so \(y\equiv{x}\mod{G}\);
+      If \(x\equiv{y}\mod{G}\), then \(xg=y\) for some \(g\in{G}\). But, then \(yg^{-1}=x\) and so \(y\equiv{x}\mod{G}\);
     \item
-      If \(x\equiv{y}\mod{G}\) and \(y\equiv{z}\mod{G}\), then we have that
-      \(xg=y\) and \(yh=z\) for certain \(g,h\in{G}\). Therefore,
-      \(x(gh)=(xg)h=yh=z\) and so \(x\equiv{z}\mod{G}\).
+      If \(x\equiv{y}\mod{G}\) and \(y\equiv{z}\mod{G}\), then we have that \(xg=y\) and \(yh=z\) for certain \(g,h\in{G}\). Therefore, \(x(gh)=(xg)h=yh=z\) and so \(x\equiv{z}\mod{G}\).
   \end{enumerate}
-  Now, notice that if \(y\in\left\{y\in{X}:x\equiv{y}\mod{G}\right\}\), then
-  \(y=gx\) for some \(g\in{G}\). Conversely, for any \(g\in{G}\),
-  \(gx\equiv{x}\mod{G}\) because \(g^{-1}\in{G}\) and
-  \(g^{-1}(gx)=(g^{-1}g)x=1x=x\). Therefore, we conclude that
+  Now, notice that if \(y\in\left\{y\in{X}:x\equiv{y}\mod{G}\right\}\), then \(y=xg\) for some \(g\in{G}\). Conversely, for any \(g\in{G}\), \(xg\equiv{x}\mod{G}\) because \(g^{-1}\in{G}\) and \((xg)g^{-1}=x(gg^{-1})=x1=x\). Therefore, we conclude that
   \begin{align*}
     \left\{y\in{X}:x\equiv{y}\mod{G}\right\}
     &=
-    \left\{gx:g\in{G}\right\}
+    \left\{xg:g\in{G}\right\}
     =\text{orb}(x,G).
   \end{align*}
   This completes the proof.
@@ -109,23 +100,35 @@ following properties:
 \end{enumerate}
 Then, it's clear that
 \begin{equation}\label{eq:numeric-characteristic}
-  \order{X}=\sum\limits_{x\in{T}}\order{\text{orb}(x,G)}=\sum\limits_{x\in{T}}(G:\text{stab}(x,G)).
+  \order{X}
+  =
+  \sum\limits_{x\in{T}}\order{\text{orb}(x,G)}
+  =
+  \sum\limits_{x\in{T}}(G:\text{stab}(x,G)).
 \end{equation}
 
 \begin{proposition}\label{prop:cardinality-of-orbits}
-  Let \(X\) be a \(G\)-set. Then, for any \(x\in{X}\), \(\text{stab}(x,G)\) is a subgroup
-  of \(G\) and the cardinality of \(\text{orb}(x,G)\), the \(G\)-orbit of \(x\), equals the
-  index \((G:\text{stab}(x,G))\) of \(\text{stab}(x,G)\) in \(G\).
+  Let \(X\) be a \(G\)-set. Then, for any \(x\in{X}\), \(\text{stab}(x,G)\) is a subgroup of \(G\) and the cardinality of \(\text{orb}(x,G)\), the \(G\)-orbit of \(x\), equals the index \((G:\text{stab}(x,G))\) of \(\text{stab}(x,G)\) in \(G\).
 \end{proposition}
 
 \begin{proof}
-  Let \(x\in{X}\) be given. The identity element of \(G\) obviously belongs to
-  \(\text{stab}(x,G)\) and, for any pair of elements \(g,h\in{\text{stab}(x,G)}\), we have that
+  Let \(x\in{X}\) be given. The identity element of \(G\) obviously belongs to \(\text{stab}(x,G)\) and, for any pair of elements \(g,h\in{\text{stab}(x,G)}\), we have that
   \[
-    x(gh^{-1})=(xg)h^{-1}=xh^{-1}=(xh)h^{-1}=x(hh^{-1})=x1=x,
+    x(gh^{-1})
+    =
+    (xg)h^{-1}
+    =
+    xh^{-1}
+    =
+    (xh)h^{-1}
+    =
+    x(hh^{-1})
+    =
+    x1
+    =
+    x,
   \]
-  and as such \(gh^{-1}\in{\text{stab}(x,G)}\). Therefore, \(\text{stab}(x,G)\) is a subgroup of
-  \(G\). Now, regarding the function
+  and as such \(gh^{-1}\in{\text{stab}(x,G)}\). Therefore, \(\text{stab}(x,G)\) is a subgroup of \(G\). Now, regarding the function
   \[
     G/\text{stab}(x,G)\to{\text{orb}(x,G)},
     \quad
@@ -142,8 +145,7 @@ Then, it's clear that
     &\iff
     \text{stab}(x,G)g=\text{stab}(x,G)h,
   \end{align*}
-  for every pair of elements \(g,h\in{G}\), from what it follows that
-  \(\text{stab}(x,G)g\mapsto{xg}\) is an injective function, as well as
+  for every pair of elements \(g,h\in{G}\), from what it follows that \(\text{stab}(x,G)g\mapsto{xg}\) is an injective function, as well as
   \[
     y\in{\text{orb}(x,G)}
     \iff
@@ -152,11 +154,12 @@ Then, it's clear that
     \implies
     \text{stab}(x,G)g\mapsto{y=xg},
   \]
-  which shows that \(\text{stab}(x,G)g\mapsto{xg}\) is also onto. Henceforth,
-  \(\order{\text{orb}(x,G)}=(G:\text{stab}(x,G))\) as claimed. This completes the proof.
+  which shows that \(\text{stab}(x,G)g\mapsto{xg}\) is also onto. Henceforth, \(\order{\text{orb}(x,G)}=(G:\text{stab}(x,G))\) as claimed. This completes the proof.
 \end{proof}
 
 \section{Applications}\label{sec:applications}
+
+Here we closely follow~\cite{herstein2010TopicsAlgebra}.
 
 \begin{proposition}\label{prop:class-equation}
   Let \(G\) be a finite \(p\)-group. Then, the center of \(G\) is not trivial.
@@ -179,8 +182,7 @@ Then, it's clear that
     =
     \order{\text{orb}(x,G)},
   \]
-  is a divisor of \(\order{G}\) that is greater than \(1\) for every
-  \({x}\in{G\setminus{Z(G)}}\) (thus, divisible by \(p\)). Since
+  is a divisor of \(\order{G}\) that is greater than \(1\) for every \({x}\in{G\setminus{Z(G)}}\) (thus, divisible by \(p\)). Since
   \begin{align*}
     \order{G}
     &=
@@ -200,14 +202,14 @@ Then, it's clear that
 \end{proof}
 
 \begin{theorem}[Cauchy]\label{thm:cauchys-theorem}
-  Let \(G\) be a finite group and \(p\) be a prime divisor of \(\order{G}\).
-  Then, there is some \(g\in{G}\) such that \(\order{g}=p\).
+  Let \(G\) be a finite group and \(p\) be a prime divisor of \(\order{G}\). Then, there is some \(g\in{G}\) such that \(\order{g}=p\).
 \end{theorem}
 
 \begin{proof}
   The graph of the function
   \[
-    f:G^{p-1}\to{G},\quad
+    f:G^{p-1}\to{G},
+    \quad
     \left(x_{1},\ldots,x_{p-1}\right)\mapsto\left(\prod_{i=1}^{p-1}x_{i}\right)^{-1},
   \]
   is the set
@@ -216,22 +218,13 @@ Then, it's clear that
     =
     \left\{(x_{1},\ldots,x_{p})\in{G^{p}}:\prod_{i=1}^{p}x_{i}=1\right\},
   \]
-  which has \(\order{G}^{p-1}\) elements in total, a number divisible by \(p\).
-  Consider the action of the additive group \(\mathbb{Z}_{p}\) on the set
-  \(\Omega\) from the right given by
+  which has \(\order{G}^{p-1}\) elements in total, a number divisible by \(p\). Consider the action of the additive group \(\mathbb{Z}_{p}\) on the set \(\Omega\) from the right given by
   \[
     \left(x_{1},x_{2}\ldots,x_{p-1},x_{p}\right)\cdot\bar{1}
     =
     \left(x_{p},x_{1}\ldots,x_{p-2},x_{p-1}\right).
   \]
-  The \(\mathbb{Z}_{p}\)-orbit of a point
-  \(x=\left(x_{1},\ldots,x_{p}\right)\in{\Omega}\) consists of the element
-  \(x\) alone if, and only if, the coordinates
-  \(x_{1},x_{2},\ldots,x_{p-1},x_{p}\) of \(x\) are all equal to one another,
-  that is, \(x_{1}=x_{2}=\cdots=x_{p-1}=x_{p}\). This is certainly the case for
-  the element \(\left(1,\ldots,1\right)\in{\Omega}\) whose coordinates are all
-  equal to the identity element of \(G\). Let \(T\subset{\Omega}\) be a
-  transveral for the action of \(\mathbb{Z}_{p}\) on \(\Omega\), meaning that:
+  The \(\mathbb{Z}_{p}\)-orbit of a point \(x=\left(x_{1},\ldots,x_{p}\right)\in{\Omega}\) consists of the element \(x\) alone if, and only if, the coordinates \(x_{1},x_{2},\ldots,x_{p-1},x_{p}\) of \(x\) are all equal to one another, that is, \(x_{1}=x_{2}=\cdots=x_{p-1}=x_{p}\). This is certainly the case for the element \(\left(1,\ldots,1\right)\in{\Omega}\) whose coordinates are all equal to the identity element of \(G\). Let \(T\subset{\Omega}\) be a transveral for the action of \(\mathbb{Z}_{p}\) on \(\Omega\), meaning that:
   \begin{enumerate}
     \item
       \(\Omega=\bigcup\left\{\text{orb}(x,\mathbb{Z}_{p}):x\in{T}\right\}\);
@@ -258,10 +251,7 @@ Then, it's clear that
   \[
     \sum_{\order{\text{orb}(x,\mathbb{Z}_{p})}>1}1.
   \]
-  This last sum would be equal to zero if there were no
-  \(\mathbb{Z}_{p}\)-orbits of size \(1\) at all in \(\Omega\), but as we've
-  already seen there's that of the element \(x=(1,\ldots,1)\). Therefore, there
-  must exist some \(g\in{G}\), \(g\neq{1}\), with
+  This last sum would be equal to zero if there were no \(\mathbb{Z}_{p}\)-orbits of size \(1\) at all in \(\Omega\), but as we've already seen there's that of the element \(x=(1,\ldots,1)\). Therefore, there must exist some \(g\in{G}\), \(g\neq{1}\), with
   \[
     \text{orb}((x,\ldots,x),\mathbb{Z}_{p})=\left\{(x,\ldots,x)\right\},
   \]
@@ -269,9 +259,7 @@ Then, it's clear that
 \end{proof}
 
 \begin{proposition}\label{prop:first-sylow-theorem}
-  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say
-  \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, there
-  exists \({H}\leqslant{G}\) such that \(\order{H}=p^{\alpha}\).
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, there exists \({H}\leqslant{G}\) such that \(\order{H}=p^{\alpha}\).
 \end{proposition}
 
 \begin{proof}
@@ -282,9 +270,7 @@ Then, it's clear that
     \left\{{X}\subset{G}:\order{X}=p^{\alpha}\right\}
     ,
   \]
-  be the set of all the sets of order \(p^{\alpha}\) in \(G\). Our objective is
-  to show that there is a subgroup of \(G\) among the elements of
-  \(\Omega(p,G)\). First, notice that \(p\) does not divide
+  be the set of all the sets of order \(p^{\alpha}\) in \(G\). Our objective is to show that there is a subgroup of \(G\) among the elements of \(\Omega(p,G)\). First, notice that \(p\) does not divide
   \[
     \order{\Omega(p,G)}
     =
@@ -312,8 +298,7 @@ Then, it's clear that
     \sum_{{X}\in{T}}\order{\text{orb}(X,G)}
     ,
   \]
-  and \(p\) does not divide \(\order{\Omega(p,G)}\), we know that \(p\) does not divide \(\order{\text{orb}(X_{0},G)}\) for some \({X_{0}}\in{\Omega(p,G)}\).
-  Take \(H=\text{stab}(X_{0},G)\). It follows that \(p^{\alpha}\) divides \(\order{H}\) since, by Lagranges's Theorem, it divides
+  and \(p\) does not divide \(\order{\Omega(p,G)}\), we know that \(p\) does not divide \(\order{\text{orb}(X_{0},G)}\) for some \({X_{0}}\in{\Omega(p,G)}\). Take \(H=\text{stab}(X_{0},G)\). It follows that \(p^{\alpha}\) divides \(\order{H}\) since, by Lagranges's Theorem, it divides
   \[
     \order{G}
     =
@@ -341,9 +326,7 @@ Then, it's clear that
 \end{definition}
 
 \begin{lemma}\label{lem:normalizer-of-sylow-subgroups}
-  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\). Then,
-  for any \({H}\in{\text{Syl}(p,G)}\) and any \(p\)-subgroup \(P\) of \(G\), we
-  have \(P\cap{N_{G}(H)}=P\cap{H}\).
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\). Then, for any \({H}\in{\text{Syl}(p,G)}\) and any \(p\)-subgroup \(P\) of \(G\), we have \(P\cap{N_{G}(H)}=P\cap{H}\).
 \end{lemma}
 
 \begin{proof}
