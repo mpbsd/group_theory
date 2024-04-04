@@ -340,26 +340,119 @@ Then, it's clear that
   be the set of all \(p\)-Sylow subgroups of \(G\) and \(n_{p}=\order{\text{Syl}(p,G)}\) be the number of \(p\)-Sylow subgroups of \(G\).
 \end{definition}
 
-\begin{theorem}\label{thm:second-sylow-theorem}
-  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, for any given \({H}\in{\text{Syl}(p,G)}\), we have that
-  \[
-    \text{Syl}(p,G)
-    =
-    \left\{H^{g}:{g}\in{G}\right\}
-    ,
-  \]
-  that is, any two \(p\)-Sylow subgroups of \(G\) are conjugate to one another.
-\end{theorem}
+\begin{lemma}\label{lem:normalizer-of-sylow-subgroups}
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\). Then,
+  for any \({H}\in{\text{Syl}(p,G)}\) and any \(p\)-subgroup \(P\) of \(G\), we
+  have \(P\cap{N_{G}(H)}=P\cap{H}\).
+\end{lemma}
 
 \begin{proof}
-  Let \(G\) act on \(\text{Syl}(p,G)\) from the right by conjugation:
+  We argue by contradiction. Suppose that \({P\cap{H}}<{P\cap{N_{G}(H)}}\) and then take any \({x}\in{P\cap{\left(N_{G}(H)\setminus{H}\right)}}\). Now, \({H\langle{x}\rangle}\leqslant{G}\) because \({H\langle{x}\rangle}=\langle{x}\rangle{H}\) since \({x}\in{N_{G}(H)}\). Also, \(\order{x}\) is a power of \(p\) becase \({p}\in{P}\) and, finally, \({p}\notin{H}\) implies that \({\left(\langle{x}\rangle:H\cap{\langle{x}\rangle}\right)}>{1}\). Thus, we conclude that
   \[
-    \text{Syl}(p,G)\times{G}\to{\text{Syl}(p,G)}
-    \quad
-    (H,g)\mapsto{H^{g}=g^{-1}Hg}.
+    \order{H\langle{x}\rangle}
+    =
+    \frac{\order{H}\order{x}}{\order{H\cap{\langle{x}\rangle}}}
+    >
+    \order{H}
+    ,
   \]
+  which is a contradiction since no \(p\)-subgroup of \(G\) has order greater than that of a \(p\)-Sylow subgroup of \(G\). Therefore, we must have \(P\cap{N_{G}(H)}=P\cap{H}\).
 \end{proof}
 
 \begin{theorem}\label{thm:second-sylow-theorem}
-  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, \(n_{p}\divides{m}\) and \(n_{p}\equiv{1}\pmod{p}\).
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, we have that:
+  \begin{enumerate}[i.]
+    \item
+      \(n_{p}\equiv{1}\pmod{p}\);
+    \item
+      for any given \({H}\in{\text{Syl}(p,G)}\), we have that
+      \[
+        \text{Syl}(p,G)
+        =
+        \left\{H^{g}:{g}\in{G}\right\}
+        ,
+      \]
+      that is, any two \(p\)-Sylow subgroups of \(G\) are conjugate to one another;
+    \item
+      \(n_{p}\) divides \(m\).
+  \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+  Let \({H}\in{\text{Syl}(p,G)}\) be any \(p\)-Sylow subgroup of \(G\). Let \(H\) act on \(\text{Syl}(p,G)\) from the right by conjugation:
+  \[
+    \text{Syl}(p,G)\times{H}\to{\text{Syl}(p,G)},
+    \quad
+    (K,g)\mapsto{K^{g}=g^{-1}Kg}.
+  \]
+  Notice that, for any \({K}\in{\text{Syl}(p,G)}\), it's true that
+  \[
+    \text{stab}(K,H)
+    =
+    \left\{{x}\in{H}:K^{x}=K\right\}
+    =
+    N_{G}(K)\cap{H}
+    =
+    K\cap{H}
+    .
+  \]
+  Then, we get that
+  \begin{align*}
+    n_{p}
+    &=
+    \sum_{{K}\in{T}}\order{\text{orb}(K,H)}
+    =
+    \sum_{{K}\in{T}}\left(H:\text{stab}(K,H)\right)
+    \\
+    &=
+    \sum_{{K}\in{T}}\left(H:H\cap{N_{G}(K)}\right)
+    =
+    \sum_{{K}\in{T}}\left(H:K\cap{H}\right)
+    ,
+  \end{align*}
+  and because \(\left(H:K\cap{H}\right)\) is a power of \(p\) that is equal to
+  \(1\) exactly once, namely, for \(K=H\), we conclude that
+  \(n_{p}\equiv{1}\pmod{p}\).
+
+  Now we would like to show that any \(p\)-subgroup of \(G\) lies in some \(p\)-Sylow subgroup of \(G\). Let \(P\) be any \(p\)-subgroup of \(G\) and let it act on \(\text{Syl}(p,G)\) from the right by conjugation
+  \[
+    \text{Syl}(p,G)\times{P}\to{\text{Syl}(p,G)},
+    \quad
+    (K,x)\mapsto{K^{x}}
+    .
+  \]
+  Since \(p\) does not divide
+  \[
+    n_{p}
+    =
+    \sum_{{K}\in{T}}\order{\text{orb}(K,P)}
+    =
+    \sum_{{K}\in{T}}(P:\text{stab}(K,P))
+    =
+    \sum_{{K}\in{T}}(P:K\cap{P})
+    ,
+  \]
+  there must exist some \({K}\in{\text{Syl}(p,G)}\) such that \((P:K\cap{P})=1\) but, then \(P=K\cap{P}\) and so \({P}\subset{K}\). In particular, if \(H,K\) are any \(p\)-Sylow subgroups \(G\), then there exists \({x}\in{G}\) such that \(H^{x}=K\).
+
+  Finally, because we now know that
+  \[
+    \text{Syl}(p,G)
+    =
+    \left\{H^{x}:{x}\in{G}\right\}
+    ,
+  \]
+  we get that
+  \[
+    n_{p}
+    =
+    \order{\text{orb}(H,G)}
+    =
+    (G:N_{G}(H))
+    =
+    \frac{(G:H)}{(N_{G}(H):H)}
+    =
+    \frac{m}{(N_{G}(H):H)}
+    ,
+  \]
+  that is, \(n_{p}\) is a divisor of \(m\).
+\end{proof}
