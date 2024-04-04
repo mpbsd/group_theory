@@ -328,3 +328,38 @@ Then, it's clear that
   \]
   Notice that \(ag\) belongs to \(X_{0}\) for every \({g}\in{H=\text{stab}(X_{0},G)}\), so the function above is well defined. It's clearly injective, so \(\order{H}\leqslant{\order{X_{0}}}=p^{\alpha}\). Therefore, \(\order{H}=p^{\alpha}\). This completes the proof.
 \end{proof}
+
+\begin{definition}\label{def:p-sylow-subgroups}
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, a subgroup \({H}\leqslant{G}\) of order \(\order{H}=p^{\alpha}\) is called a \(p\)-Sylow subgroup of \(G\). Let
+  \[
+    \text{Syl}(p,G)
+    =
+    \left\{{H}\leqslant{G}:\order{H}=p^{\alpha}\right\}
+    ,
+  \]
+  be the set of all \(p\)-Sylow subgroups of \(G\) and \(n_{p}=\order{\text{Syl}(p,G)}\) be the number of \(p\)-Sylow subgroups of \(G\).
+\end{definition}
+
+\begin{theorem}\label{thm:second-sylow-theorem}
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, for any given \({H}\in{\text{Syl}(p,G)}\), we have that
+  \[
+    \text{Syl}(p,G)
+    =
+    \left\{H^{g}:{g}\in{G}\right\}
+    ,
+  \]
+  that is, any two \(p\)-Sylow subgroups of \(G\) are conjugate to one another.
+\end{theorem}
+
+\begin{proof}
+  Let \(G\) act on \(\text{Syl}(p,G)\) from the right by conjugation:
+  \[
+    \text{Syl}(p,G)\times{G}\to{\text{Syl}(p,G)}
+    \quad
+    (H,g)\mapsto{H^{g}=g^{-1}Hg}.
+  \]
+\end{proof}
+
+\begin{theorem}\label{thm:second-sylow-theorem}
+  Let \(G\) be a finite group and \(p\) a prime divisor of \(\order{G}\), say \(\order{G}=p^{\alpha}m\) with \({\alpha}>{0}\) and \((p,m)=1\). Then, \(n_{p}\divides{m}\) and \(n_{p}\equiv{1}\pmod{p}\).
+\end{theorem}
